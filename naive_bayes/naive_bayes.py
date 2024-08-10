@@ -3,7 +3,7 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.metrics import accuracy_score
 from yellowbrick.classifier import ConfusionMatrix
 
-with open('../Employees_.pkl','rb') as f:
+with open('../Employees.pkl','rb') as f:
     X_treinamento,y_treinamento,X_teste,y_teste,df=pickle.load(f)
 
 # ============= APLICAÇÃO DO ALGORITMO =============

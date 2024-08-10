@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-from sklearn.preprocessing import LabelEncoder,OneHotEncoder
+from sklearn.preprocessing import LabelEncoder,OneHotEncoder,StandardScaler
 from sklearn.compose import ColumnTransformer
 from sklearn.model_selection import train_test_split
 import pickle
@@ -16,6 +16,7 @@ df['Start Date']=df['Start Date'].astype('object')
 df['Country']=coluna_y
 df.info()
 df.describe()
+df['Start Date'].duplicated().value_counts()
 
 # ======== VISUALIZAÇÃO ========
 # sns.countplot(x=df['Gender'],palette='dark')
@@ -42,8 +43,13 @@ one_hot_encoder=ColumnTransformer(transformers=[('OneHot',OneHotEncoder(),indice
 X=one_hot_encoder.fit_transform(X).toarray()
 
 # ======== ESCALONAMENTO DE VALORES ========
-X_treinamento,X_teste,y_treinamento,y_teste=train_test_split(X,y,test_size=0.3,random_state=0)
+scaler=StandardScaler()
+X=scaler.fit_transform(X)
+
+
+# ======== TREINAMENTO ========
+X_treinamento,X_teste,y_treinamento,y_teste=train_test_split(X,y,test_size=0.1,random_state=0)
 
 # ======== SALVANDO VARIÁVEIS EM DISCO ========
-# with open('Employees.pkl',mode='wb') as f:
-#     pickle.dump([X_treinamento,y_treinamento,X_teste,y_teste,df],f)
+with open('Employees.pkl',mode='wb') as f:
+    pickle.dump([X_treinamento,y_treinamento,X_teste,y_teste,df],f)
