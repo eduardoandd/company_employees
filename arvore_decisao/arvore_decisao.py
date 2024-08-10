@@ -14,7 +14,7 @@ arvore.fit(X_treinamento,y_treinamento)
 arvore.feature_importances_
 previsao=arvore.predict(X_teste)
 y_teste
-accuracy_score(y_teste,previsao)
+accuracy_score(y_teste,previsao) # 40% ~ 50%
 
 cm=ConfusionMatrix(arvore)
 cm.fit(X_treinamento,y_treinamento)

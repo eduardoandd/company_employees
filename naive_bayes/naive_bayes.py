@@ -12,7 +12,7 @@ naive_employees.fit(X_treinamento,y_treinamento)
 previsao=naive_employees.predict(X_teste)
 y_teste
 
-accuracy_score(y_teste,previsao) #41%
+accuracy_score(y_teste,previsao) #20%
 cm=ConfusionMatrix(naive_employees)
 cm.fit(X_treinamento,y_treinamento)
 cm.score(X_teste,y_teste)
