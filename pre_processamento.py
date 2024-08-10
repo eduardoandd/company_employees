@@ -18,8 +18,8 @@ df.info()
 df.describe()
 
 # ======== VISUALIZAÇÃO ========
-sns.countplot(x=df['Gender'],palette='dark')
-sns.countplot(x=df['Job Rate'],palette='dark')
+# sns.countplot(x=df['Gender'],palette='dark')
+# sns.countplot(x=df['Job Rate'],palette='dark')
 
 # ======== DIVISÃO ENTRE PREVISORES E CLASSE ========
 X=df.iloc[:,0:-1].values
@@ -31,7 +31,7 @@ indices=[]
 
 for i in range(X.shape[1]):
 
-    #Comente esse código caso a acurácia seja menor.
+    # Comente esse código caso a acurácia seja maior.
     if df.dtypes[i] == 'object':
         X[:,i]=label_encoder.fit_transform(X[:,i])
 
@@ -45,5 +45,5 @@ X=one_hot_encoder.fit_transform(X).toarray()
 X_treinamento,X_teste,y_treinamento,y_teste=train_test_split(X,y,test_size=0.3,random_state=0)
 
 # ======== SALVANDO VARIÁVEIS EM DISCO ========
-with open('Employees.pkl',mode='wb') as f:
-    pickle.dump([X_treinamento,y_treinamento,X_teste,y_teste,df],f)
+# with open('Employees.pkl',mode='wb') as f:
+#     pickle.dump([X_treinamento,y_treinamento,X_teste,y_teste,df],f)
